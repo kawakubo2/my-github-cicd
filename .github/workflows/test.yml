@@ -17,6 +17,6 @@ jobs:
               run: |
                     echo "### Test Results 📋" >> $GITHUB_STEP_SUMMARY
                     echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-                    go test -v ./go/excellent/... >> $GITHUB_STEP_SUMMARY
+                    go test -v ./excellent/... >> $GITHUB_STEP_SUMMARY
                     echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
               if: always() # テストが落ちてもレポートを出すために必須
