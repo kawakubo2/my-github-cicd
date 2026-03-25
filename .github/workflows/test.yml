@@ -14,9 +14,9 @@ jobs:
             
             - name: Run tests and output to Summary
                     # 1. 標準出力(Console)に詳細を出しつつ、2. 結果をSummaryファイルに追記する
-                run: |
+              run: |
                     echo "### Test Results 📋" >> $GITHUB_STEP_SUMMARY
                     echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
                     go test -v ./go/excellent/... >> $GITHUB_STEP_SUMMARY
                     echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-                if: always() # テストが落ちてもレポートを出すために必須
+              if: always() # テストが落ちてもレポートを出すために必須
