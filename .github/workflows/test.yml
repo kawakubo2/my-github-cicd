@@ -13,5 +13,5 @@ jobs:
             - name: Test Summary
               run: |
                 echo "### Test Results 🚀" >> $GITHUB_STEP_SUMMARY
-                go test -v ./go/excellent/... >> $GITHUB_STEP_SUMMARY
+                go test -v ./go/excellent/**/*.go >> $GITHUB_STEP_SUMMARY
               if: always()
