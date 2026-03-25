@@ -10,8 +10,11 @@ jobs:
             - uses: actions/setup-go@v5
               with:
                     go-version: '1.22'
-            - name: Test Summary
-              run: |
-                echo "### Test Results 🚀" >> $GITHUB_STEP_SUMMARY
-                go test -v ./go/excellent/**/*.go >> $GITHUB_STEP_SUMMARY
-              if: always()
+            - name: Run tests with JSON output
+              run: go test -v -json ./go/excellent/... > test-report.json
+
+            - name: Annotate tests
+              uses: guyarb/golang-test-annotations@v0.6.0
+              with:
+                test-results: test-report.json
+              if: always() # テストが失敗しても実行されるようにする
