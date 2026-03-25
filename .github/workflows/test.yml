@@ -10,4 +10,8 @@ jobs:
             - uses: actions/setup-go@v5
               with:
                     go-version: '1.22'
-            - run: go test go/excellent/*.go
+            - name: Test Summary
+              run: |
+                echo "### Test Results 🚀" >> $GITHUB_STEP_SUMMARY
+                go test -v ./go/excellent/... >> $GITHUB_STEP_SUMMARY
+              if: always()
