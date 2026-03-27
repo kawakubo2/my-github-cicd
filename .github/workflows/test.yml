@@ -5,10 +5,13 @@ on:
 defaults:
     run:
         shell: bash
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
     test:
         runs-on: ubuntu-latest
-
+        timeout-minutes: 5
         steps:
             - uses: actions/checkout@v4
             - uses: actions/setup-go@v5
@@ -16,8 +19,8 @@ jobs:
                   go-version: '1.22'
             
             - name: Run tests and output to Summary
-                    # 1. 標準出力(Console)に詳細を出しつつ、2. 結果をSummaryファイルに追記する
-                    # go.mod が置いてあるディレクトリを指定する
+              # 1. 標準出力(Console)に詳細を出しつつ、2. 結果をSummaryファイルに追記する
+              # go.mod が置いてあるディレクトリを指定する
               working-directory: ./go 
               run: |
                     echo "### Test Results 📋" >> $GITHUB_STEP_SUMMARY
