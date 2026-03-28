@@ -1,3 +1,5 @@
+# テスト環境と本番環境でユーザ名をパスワード
+# を切り替えるテスト
 name: Environments
 on:
   workflow_dispatch:
